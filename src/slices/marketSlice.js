@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { STRATEGY } from '../constants/Strategy';
 
 const initialState = {
 	country: '',
+	strategy: STRATEGY.BOX,
 };
 
 export const marketSlice = createSlice({
@@ -10,6 +12,9 @@ export const marketSlice = createSlice({
 	reducers: {
 		chooseMarket: (state, action) => {
 			state.country = action.payload;
+		},
+		chooseStrategy: (state, action) => {
+			state.strategy = action.payload;
 		},
 	},
 });
