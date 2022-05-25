@@ -404,6 +404,7 @@ const WorldMapSvgContainer = styled.svg`
 			? 'scale(2.25) translateX(-375px) translateY(60px)'
 			: ''};
 `;
+
 const UsaG = styled.g`
 	fill: ${(props) =>
 		props.server === SERVER_LOCATION.USA ? 'white' : '#9EA2BC'};
