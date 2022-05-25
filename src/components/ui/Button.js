@@ -7,9 +7,17 @@ export const Button = ({
 	onClick,
 	active,
 	fontSize = '16px',
+	style,
+	className,
 }) => {
 	return (
-		<CustomButton onClick={onClick} active={active} fontSize={fontSize}>
+		<CustomButton
+			className={className}
+			style={style}
+			onClick={onClick}
+			active={active}
+			fontSize={fontSize}
+		>
 			{children || text}
 		</CustomButton>
 	);

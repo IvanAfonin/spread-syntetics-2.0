@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { WorldMapSVG } from '../assets/svgs/WorldMapSVG';
 import { useDispatch, useSelector } from 'react-redux';
-import { chooseMarket } from '../slices/marketSlice';
+import { chooseMarket } from '../../slices/marketSlice';
+import { WorldMapSVG } from '../../assets/svgs/WorldMapSVG';
 
 export const WorldMap = () => {
 	const country = useSelector((state) => state.market.country);
