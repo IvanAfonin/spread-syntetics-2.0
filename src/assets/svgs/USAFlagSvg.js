@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { SERVER_LOCATION } from '../../constants/ServerLocation';
 
-export const USAFlagSVG = ({ isActive = false }) => (
+export const USAFlagSVG = ({ isActive = false, handleChangeServer }) => (
 	<USAFlag
 		isActive={isActive}
 		viewBox="0 0 32 32"
@@ -9,6 +10,7 @@ export const USAFlagSVG = ({ isActive = false }) => (
 		xmlns="http://www.w3.org/2000/svg"
 		width="40"
 		height="40"
+		onClick={() => handleChangeServer(SERVER_LOCATION.USA)}
 	>
 		<path
 			d="M29.6034 5.51725H2.39656C1.07294 5.51725 0 6.59019 0 7.91381V24.0863C0 25.4098 1.07294 26.4828 2.39656 26.4828H29.6034C30.927 26.4828 32 25.4099 32 24.0863V7.91381C32 6.59019 30.9271 5.51725 29.6034 5.51725Z"
@@ -205,7 +207,7 @@ const USAFlag = styled.svg`
 	cursor: pointer;
 	width: 48px;
 	height: 32px;
-	margin: 0 auto;
+	margin-right: 24px;
 	background: ${(props) =>
 		props.isActive ? '#34395A' : 'rgba(255, 255, 255, 0.1)'};
 	box-shadow: ${(props) => (props.isActive ? '0 0 0 2px #546ee5' : 'none')};

@@ -394,13 +394,12 @@ const WorldMapSvgContainer = styled.svg`
 	display: block;
 	margin: 0 auto;
 	width: 100%;
-	height: 100%;
 	z-index: 1;
-	transition: 1.5s all;
+	transition: 1.3s all;
 	position: ${(props) => (props.server ? 'static' : 'relative')};
 	transform: ${(props) =>
 		props.server === SERVER_LOCATION.USA
-			? 'scale(2.25) translateX(400px)'
+			? 'scale(2.25) translateX(300px)'
 			: props.server === SERVER_LOCATION.EUROPE
 			? 'scale(2.25) translateX(-375px) translateY(60px)'
 			: ''};
