@@ -16,6 +16,7 @@ export const Header = () => {
 };
 
 const HeaderContainer = styled.div`
+	display: flex;
 	margin: 0px 24px;
 	background: #202542;
 	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);

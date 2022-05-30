@@ -62,6 +62,7 @@ const LeftSectionStyled = styled.div`
 const SelectStyled = styled.select`
 	margin-right: 32px;
     margin-left: 32px;
+	font-weight: 400;
     background: #34395A;
     border-radius: 2px;
     color: #FFFFFF;

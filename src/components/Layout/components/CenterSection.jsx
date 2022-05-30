@@ -2,22 +2,30 @@ import React from 'react';
 import { LINKS } from '../../../constants/Links';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { Divider } from '../../../assets/svgs/Divider';
 
 export const CenterSection = () => {
 	return (
-		<div>
+		<CenterSectionStyled>
 			{LINKS.map((link) => (
 				<StyledLink key={link.path} to={link.path}>{link.name}</StyledLink>
 			))}
-		</div>
+			<Divider/>
+		</CenterSectionStyled>
 	);
 };
+
+const CenterSectionStyled = styled.div`
+	display: flex;
+	align-items: center;
+	margin-left: 32px;	
+`;
 
 const StyledLink = styled(NavLink)`
 	margin-right: 40px;
 	text-decoration: none;
 	color: #FFFFFF;
-	font-weight: 500;
+	font-weight: 300;
 	font-size: 20px;
 	line-height: 32px;
 	&.active{
