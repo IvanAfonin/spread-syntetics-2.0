@@ -34,10 +34,4 @@ const StyledLink = styled(NavLink)`
 		transition: 0.5s ease;
 		box-shadow: 0px 4px 0px 0px #546ee5
 	}
-	:hover {
-		font-weight: 500;
-		padding-bottom: 4px;
-		transition: 0.5s ease;
-		box-shadow: 0px 4px 0px 0px #546ee5
-	}
 `;
