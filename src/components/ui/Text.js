@@ -33,6 +33,6 @@ const CustomText = styled.p`
   line-height: ${(props) => props.lineHeight};
   margin: ${(props) => props.margin};
   font-weight: ${(props) => props.fontWeight};
-  color: #ffffff;
+  color: ${(props) => props.theme.palette.text.primary};
   font-family: 'Ubuntu', serif;
 `;

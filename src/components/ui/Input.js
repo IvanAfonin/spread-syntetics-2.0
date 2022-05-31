@@ -20,15 +20,15 @@ export const Input = ({
 };
 
 const CustomInput = styled.input`
-  color: #ffffff;
-  border: 0 solid white;
+  color: ${(props) => props.theme.palette.text.primary};
+  border: 0 solid ${(props) => props.theme.palette.text.primary};
   height: 40px;
   display: block;
   outline: none;
-  margin-top: 16px;
-  padding-left: 36px;
+  margin-top: ${(props) => props.theme.spacing(2)}px;
+  padding-left: ${(props) => props.theme.spacing(4.5)}px;
   border-radius: 4px;
-  background: #34395a;
+  background: ${(props) => props.theme.palette.primary.light};
   background-repeat: no-repeat;
   background-position: 12px center;
   font-size: ${(props) => props.fontSize};
