@@ -6,6 +6,7 @@ export const Input = ({
   value,
   placeholder,
   backgroundImage,
+  ...props
 }) => {
   return (
     <CustomInput
@@ -13,6 +14,7 @@ export const Input = ({
       placeholder={placeholder}
       onChange={onChange}
       value={value}
+      {...props}
     />
   );
 };

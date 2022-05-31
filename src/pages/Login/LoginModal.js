@@ -9,6 +9,9 @@ import usernameIcon from '../../assets/images/usernameIcon.png';
 import styled from 'styled-components';
 import { Text } from '../../components/ui/Text';
 import { Switcher } from '../../components/ui/Switcher';
+import { loginThunk } from '../../api/auth/auth.thunk';
+import { useNavigate } from 'react-router';
+import { PATH } from '../../constants/path';
 
 export const LoginModal = () => {
   const [loginForm, setLoginForm] = useState({
@@ -17,6 +20,7 @@ export const LoginModal = () => {
   });
   const market = useSelector((state) => state.market.country);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleCloseModal = () => {
     dispatch(chooseMarket(''));
@@ -26,11 +30,18 @@ export const LoginModal = () => {
     setLoginForm({ ...loginForm, [key]: value });
   };
 
+  const handleLogin = async () => {
+    await dispatch(
+      loginThunk(loginForm.username, loginForm.password)
+    );
+    navigate(PATH.TOPS);
+  };
+
   return (
     <Modal open={!!market}>
       <LoginText>Login</LoginText>
       <div>
-        <Text>Info Type</Text>
+        <StyledInfoTypeText>Info Type</StyledInfoTypeText>
         <Switcher />
         <InputContainer>
           <Input
@@ -42,6 +53,7 @@ export const LoginModal = () => {
             backgroundImage={usernameIcon}
           />
           <Input
+            type="password"
             value={loginForm.password}
             onChange={(e) =>
               handleLoginInput('password', e.target.value)
@@ -53,7 +65,7 @@ export const LoginModal = () => {
         <ErrorText />
 
         <ButtonContainer>
-          <ApplyButton text="Apply" active />
+          <ApplyButton onClick={handleLogin} text="Apply" active />
           <Button onClick={handleCloseModal} text="Cancel" />
         </ButtonContainer>
       </div>
@@ -62,9 +74,8 @@ export const LoginModal = () => {
 };
 
 const Modal = styled.div`
-  //display: ${(props) => (props.open ? 'block' : 'none')};
   display: block;
-  width: 600px;
+  width: ${(props) => props.theme.spacing(62.5)}px;
   position: absolute;
   top: ${(props) => (props.open ? '50%' : '150%')};
   left: 50%;
@@ -81,8 +92,8 @@ const ButtonContainer = styled.div`
 `;
 
 const ErrorText = styled.p`
-  color: #eb001b;
-  margin-top: 16px;
+  color: ${(props) => props.theme.palette.error.main};
+  margin-top: ${(props) => props.theme.spacing(2)}px;
   text-align: center;
   margin-bottom: 10px;
 `;
@@ -93,7 +104,7 @@ const InputContainer = styled.div`
 `;
 
 const ApplyButton = styled(Button)`
-  margin: 16px 0;
+  margin: ${(props) => props.theme.spacing(2)}px 0;
 `;
 
 const LoginText = styled.h3`
@@ -101,4 +112,8 @@ const LoginText = styled.h3`
   text-align: center;
   line-height: 32px;
   font-weight: 400;
+`;
+
+const StyledInfoTypeText = styled(Text)`
+  margin-bottom: ${(props) => props.theme.spacing(1)}px;
 `;
