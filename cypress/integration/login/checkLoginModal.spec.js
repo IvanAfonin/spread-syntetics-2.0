@@ -12,4 +12,12 @@ describe('Check login elements', () => {
     cy.get('#europeSVG').click();
     cy.contains('Apply').should('be.visible');
   });
+
+  it('Check login flow', () => {
+    cy.get('#usaSVG').click();
+    cy.get('#username').type('Moskal1');
+    cy.get('#password').type('qwerty123');
+    cy.get('#submit').click();
+    cy.url().should('include', '/tops');
+  });
 });

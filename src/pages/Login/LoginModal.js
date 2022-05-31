@@ -51,6 +51,7 @@ export const LoginModal = () => {
             }
             placeholder="Username"
             backgroundImage={usernameIcon}
+            id="username"
           />
           <Input
             type="password"
@@ -60,12 +61,18 @@ export const LoginModal = () => {
             }
             placeholder="Password"
             backgroundImage={lockIcon}
+            id="password"
           />
         </InputContainer>
         <ErrorText />
 
         <ButtonContainer>
-          <ApplyButton onClick={handleLogin} text="Apply" active />
+          <ApplyButton
+            id="submit"
+            onClick={handleLogin}
+            text="Apply"
+            active
+          />
           <Button onClick={handleCloseModal} text="Cancel" />
         </ButtonContainer>
       </div>
