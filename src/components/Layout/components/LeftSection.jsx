@@ -27,7 +27,7 @@ export const LeftSection = () => {
 			    <img src={logoPNG} style={{width: 150}}/>
 			</div>
 			<FlagsContainer>
-				<USAFlagSVG isActive={country === SERVER_LOCATION.USA}
+				<USAFlagStyled isActive={country === SERVER_LOCATION.USA}
 					handleChangeServer={handleChangeServer}/>
 				<StyledEuropeanFlag isActive={country === SERVER_LOCATION.EUROPE}
 					handleChangeServer={handleChangeServer}/>
@@ -35,19 +35,24 @@ export const LeftSection = () => {
 			<div className='select'>
 				<SelectStyled>
 					<OptionStyled onClick={() => handleChangeStrategy (STRATEGY.BOX)}>Box strategies</OptionStyled>
-					<OptionStyled onClick={() => handleChangeStrategy (STRATEGY.STOCKANDOPTIONS)}>Stocks + options strategies</OptionStyled>
+					<OptionStyled onClick={() => handleChangeStrategy (STRATEGY.STOCKANDOPTIONS)}>Stocks + Options strategies</OptionStyled>
 				</SelectStyled>
 			</div>
 			<Divider/>
 		</LeftSectionStyled>
 	);
 };
+const USAFlagStyled = styled(USAFlagSVG)`
+	margin-bottom: 16px;	
+`;
 
 const StyledEuropeanFlag = styled(EuropeanFlagSVG)`
 	margin-top: 8px;
 `;
 
 const FlagsContainer = styled.div`
+	margin: 16px 32px;
+	margin-top: 16px;
 	margin-left: 32px;
 	display: flex;
 	flex-direction: column;	
@@ -56,22 +61,29 @@ const FlagsContainer = styled.div`
 const LeftSectionStyled = styled.div`
     display: flex;
 	align-items: center;
-	margin-left: 36px;
 `;
 
 const SelectStyled = styled.select`
+	font-family: 'Ubuntu';
 	margin-right: 32px;
-    margin-left: 32px;
-	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
     background: #34395A;
     border-radius: 2px;
     color: #FFFFFF;
+	border: none;
+	outline: none;
+	padding: 4px 8px;
 `;
 
 const OptionStyled = styled.option`
-
+	font-weight: 300;
+	font-size: 16px;
     font-family: 'Ubuntu';
     font-style: normal;
     line-height: 24px;
     color: #FFFFFF;
+	outline: none;
+	border: 1px solid transparent;
+	padding: 4px 8px;
 `;
