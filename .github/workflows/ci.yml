@@ -1,0 +1,73 @@
+name: Build and Test
+on: [push]
+
+jobs:
+  cancel-redundant-jobs:
+    name: 'Cancel redundant jobs.'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: technote-space/auto-cancel-redundant-job@v1
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.18.1
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+            ~/.cache
+            node_modules
+          key: build-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            build-npm-
+            build-
+      - name: Install NPM Packages
+        run: npm install --prefer-offline --no-audit
+      - name: Build
+        env:
+          REACT_APP_BUGSNAG_ID: 'REACT_APP_BUGSNAG_ID'
+        run: npm run build --if-present
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-ready-build
+          path: build
+  cypress-specs-chrome:
+    name: 'Cypress specs on Chrome'
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.18.1
+      - name: Install serve
+        run: npm install serve -g
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: test-ready-build
+          path: build
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          install: true
+          headless: true
+          browser: chrome
+          start: serve -s build -l 3000
+          wait-on: 'http://localhost:3000'
+      - uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
