@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { CenterSection } from './components/CenterSection';
 import { LeftSection } from './components/LeftSection';
 import { RightSection } from './components/RightSection';
-import { useWebsocket } from '../../hooks/useWebsocket';
+import { useWebsockets } from '../../tools/hooks/useWebsocket';
 
 export const Header = () => {
+  const { initPingWS, initWS } = useWebsockets();
+
+  useEffect(() => {
+    initPingWS();
+    initWS();
+  }, []);
   return (
     <HeaderContainer>
       <StyledContainer>

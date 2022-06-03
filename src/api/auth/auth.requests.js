@@ -5,5 +5,14 @@ export const loginRequest = async (login, password) => {
     email: login,
     password: password,
   });
-  return response.data;
+  return response;
+};
+
+export const getAccountRequest = async (token) => {
+  const response = await axiosInstance.get('/auth_service/profile', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response;
 };

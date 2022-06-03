@@ -1,16 +1,23 @@
 import React from 'react';
-import { Header } from '../../pages/Login/Header';
+import { Header } from './Header';
+import { Outlet } from 'react-router';
+
 import styled from 'styled-components';
 
-export const Layout = ({ children }) => {
-	return (
-		<>
-			<Header />
-			<MainWrapper>{children}</MainWrapper>
-		</>
-	);
+export const Layout = () => {
+  return (
+    <>
+      <Header />
+      <StyledContainer>
+        <Outlet />
+      </StyledContainer>
+    </>
+  );
 };
 
-const MainWrapper = styled.div`
-	display: flex;
+const StyledContainer = styled.div`
+  margin-top: ${(props) => props.theme.spacing(4)}px;
+  margin-right: ${(props) => props.theme.spacing(7.5)}px;
+  margin-bottom: ${(props) => props.theme.spacing(5)}px;
+  margin-left: ${(props) => props.theme.spacing(7.5)}px;
 `;
