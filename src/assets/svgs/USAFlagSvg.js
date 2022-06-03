@@ -207,7 +207,6 @@ const USAFlag = styled.svg`
 	cursor: pointer;
 	width: 48px;
 	height: 32px;
-	margin-right: 24px;
 	background: ${(props) =>
 		props.isActive ? '#34395A' : 'rgba(255, 255, 255, 0.1)'};
 	box-shadow: ${(props) => (props.isActive ? '0 0 0 2px #546ee5' : 'none')};
