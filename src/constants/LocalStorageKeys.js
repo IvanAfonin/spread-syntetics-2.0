@@ -1,3 +1,4 @@
 export const LOCALSTORAGEKEYS = {
   AUTH: 'AUTHTOKEN',
+  SETTINGS: 'USER_SETTINGS',
 };

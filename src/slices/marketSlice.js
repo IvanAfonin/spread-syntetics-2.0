@@ -19,7 +19,6 @@ export const marketSlice = createSlice({
   },
 });
 
-
 export const { chooseMarket, chooseStrategy } = marketSlice.actions;
 
 export const marketSliceReducer = marketSlice.reducer;
