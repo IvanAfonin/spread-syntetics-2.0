@@ -5,6 +5,7 @@ import { SERVER_LOCATION } from '../../constants/ServerLocation';
 export const EuropeanFlagSVG = ({
   isActive = false,
   handleChangeServer,
+  ...props
 }) => (
   <EurpoeanFlag
     isActive={isActive}
@@ -14,6 +15,7 @@ export const EuropeanFlagSVG = ({
     width="40"
     height="40"
     onClick={() => handleChangeServer(SERVER_LOCATION.EUROPE)}
+    {...props}
   >
     <path
       d="M29.6034 5.51719H2.39656C1.07294 5.51719 0 6.59013 0 7.91375V24.0863C0 25.4098 1.07294 26.4828 2.39656 26.4828H29.6034C30.927 26.4828 32 25.4099 32 24.0863V7.91375C32 6.59013 30.9271 5.51719 29.6034 5.51719Z"

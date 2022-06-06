@@ -21,7 +21,7 @@ export const Input = ({
 
 const CustomInput = styled.input`
   color: ${(props) => props.theme.palette.text.primary};
-  border: 0 solid ${(props) => props.theme.palette.text.primary};
+  border: none;
   height: 40px;
   display: block;
   outline: none;
