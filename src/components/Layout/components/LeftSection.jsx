@@ -32,12 +32,10 @@ export const LeftSection = () => {
 				<StyledEuropeanFlag isActive={country === SERVER_LOCATION.EUROPE}
 					handleChangeServer={handleChangeServer}/>
 			</FlagsContainer>
-			<div className='select'>
 				<SelectStyled>
 					<OptionStyled onClick={() => handleChangeStrategy (STRATEGY.BOX)}>Box strategies</OptionStyled>
 					<OptionStyled onClick={() => handleChangeStrategy (STRATEGY.STOCKANDOPTIONS)}>Stocks + Options strategies</OptionStyled>
 				</SelectStyled>
-			</div>
 			<Divider/>
 		</LeftSectionStyled>
 	);

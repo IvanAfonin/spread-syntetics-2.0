@@ -22,7 +22,7 @@ const CenterSectionStyled = styled.div`
 `;
 
 const StyledLink = styled(NavLink)`
-	margin-right: 40px;
+	margin-right: ${props => props.theme.spacing(5)}px;
 	text-decoration: none;
 	color: #FFFFFF;
 	font-weight: 300;
@@ -30,8 +30,11 @@ const StyledLink = styled(NavLink)`
 	line-height: 32px;
 	&.active{
 		font-weight: 500;
-		padding-bottom: 4px;
 		transition: 0.5s ease;
-		box-shadow: 0px 4px 0px 0px #546ee5
+		box-shadow: 0 4px 0 0 ${props => props.theme.palette.secondary.main}
+	}
+	@media screen and (max-width: 1380px) {
+		font-size: 16px;
+		margin-right: ${props => props.theme.spacing(4)}px;
 	}
 `;

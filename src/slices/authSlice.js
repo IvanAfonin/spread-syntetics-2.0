@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: null,
+  user: {
+    Email: '',
+    ImagePath: '',
+    IsAdmin: false,
+  },
   isAuthenticated: false,
   ping: 0,
 };
@@ -17,13 +21,13 @@ export const authSlice = createSlice({
     setPing: (state, action) => {
       state.ping = action.payload;
     },
-    signOut: (state) => {
+    logout: (state) => {
       state.isAuthenticated = false;
       state.user = null;
     },
   },
 });
 
-export const { setUser, setPing, signOut } = authSlice.actions;
+export const { setUser, setPing, logout } = authSlice.actions;
 
 export const authSliceReducer = authSlice.reducer;
