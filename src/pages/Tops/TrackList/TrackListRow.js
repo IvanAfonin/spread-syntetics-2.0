@@ -11,6 +11,7 @@ export const TracklistRow = ({ index, data, tracklistType }) => {
       <TrackListCell>{index + 1}</TrackListCell>
       <TrackListCell>
         <TracklistInput
+          id={`stock_input_${index}`}
           placeholder="Stock"
           value={data.stock}
           index={index}
@@ -20,6 +21,7 @@ export const TracklistRow = ({ index, data, tracklistType }) => {
       </TrackListCell>
       <TrackListCell>
         <TracklistInput
+          id={`strikeFirst_input_${index}`}
           placeholder="0"
           value={data.strikeFirst}
           index={index}
