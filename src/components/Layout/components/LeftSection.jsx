@@ -24,10 +24,10 @@ export const LeftSection = () => {
 	return (
 		<LeftSectionStyled>
 			<div className='logo'>
-			    <img src={logoPNG} style={{width: 150}}/>
+			    <img src={logoPNG} style={{width: 150}} alt='logo'/>
 			</div>
 			<FlagsContainer>
-				<USAFlagStyled isActive={country === SERVER_LOCATION.USA}
+				<USAFlagSVG isActive={country === SERVER_LOCATION.USA}
 					handleChangeServer={handleChangeServer}/>
 				<StyledEuropeanFlag isActive={country === SERVER_LOCATION.EUROPE}
 					handleChangeServer={handleChangeServer}/>
@@ -42,9 +42,6 @@ export const LeftSection = () => {
 		</LeftSectionStyled>
 	);
 };
-const USAFlagStyled = styled(USAFlagSVG)`
-	margin-bottom: 16px;	
-`;
 
 const StyledEuropeanFlag = styled(EuropeanFlagSVG)`
 	margin-top: 8px;
@@ -52,8 +49,6 @@ const StyledEuropeanFlag = styled(EuropeanFlagSVG)`
 
 const FlagsContainer = styled.div`
 	margin: 16px 32px;
-	margin-top: 16px;
-	margin-left: 32px;
 	display: flex;
 	flex-direction: column;	
 `;
